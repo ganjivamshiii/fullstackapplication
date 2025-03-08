@@ -1,5 +1,5 @@
 # fullstackapplication
-### **Analysis of Your Full Stack Application**  
+### **Analysis of Full Stack Travel Application**  
 
 Your project is a **Spring Boot Full Stack Application** using **Spring Boot (Java) for the backend**, **HTML & CSS for the frontend**, and **SQL for database management**. Below is a structured analysis of your project:  
 
@@ -46,7 +46,7 @@ fullstackapplication/
 🛠 **Improvements:**  
 - Consider using **Bootstrap/Tailwind CSS** for better styling.  
 - If using **Thymeleaf**, organize reusable templates efficiently.  
-- Add **JavaScript (or React/Angular)** to improve interactivity.  
+- Add **JavaScript :** to improve interactivity.  
 
 ---
 
