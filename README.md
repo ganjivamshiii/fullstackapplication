@@ -1,12 +1,12 @@
 # fullstackapplication
 ### **Analysis of Full Stack Travel Application**  
 
-Your project is a **Spring Boot Full Stack Application** using **Spring Boot (Java) for the backend**, **HTML & CSS for the frontend**, and **SQL for database management**. Below is a structured analysis of your project:  
+This project is a **Spring Boot Full Stack Application** using **Spring Boot (Java) for the backend**, **HTML & CSS for the frontend**, and **SQL for database management**.
 
 ---
 
 ## **1️⃣ Project Structure & Components**  
-Your project likely follows a **standard Spring Boot structure**, which includes:  
+The project likely follows a **standard Spring Boot structure**, which includes:  
 
 ```
 fullstackapplication/
