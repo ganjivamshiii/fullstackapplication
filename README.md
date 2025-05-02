@@ -8,15 +8,18 @@ A **Spring Boot Full Stack Application** that demonstrates the use of **Java (Sp
 
 
 fullstackapplication/
-│── src/
-│ ├── main/
-│ │ ├── java/com/example/app/ # Java Backend (Controllers, Services, Repositories)
-│ │ ├── resources/
-│ │ │ ├── static/ # CSS, JS, Images
-│ │ │ ├── templates/ # HTML Files (Thymeleaf)
-│ │ │ └── application.properties # Database & App Configuration
-│── pom.xml # Maven Dependencies
-│── README.md
+│
+├── src/
+│   └── main/
+│       ├── java/
+│       │   └── com/example/app/             # Java Backend (Controllers, Services, Repositories)
+│       ├── resources/
+│       │   ├── static/                      # CSS, JS, Images
+│       │   ├── templates/                   # HTML Files (Thymeleaf)
+│       │   └── application.properties       # Database & App Configuration
+│
+├── pom.xml                                  # Maven Dependencies
+└── README.md
 
 
 
