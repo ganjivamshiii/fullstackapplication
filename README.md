@@ -6,9 +6,8 @@ A **Spring Boot Full Stack Application** that demonstrates the use of **Java (Sp
 
 ## 📁 Project Structure & Components
 
-
+```
 fullstackapplication/
-│
 ├── src/
 │   └── main/
 │       ├── java/
@@ -17,12 +16,9 @@ fullstackapplication/
 │       │   ├── static/                      # CSS, JS, Images
 │       │   ├── templates/                   # HTML Files (Thymeleaf)
 │       │   └── application.properties       # Database & App Configuration
-│
 ├── pom.xml                                  # Maven Dependencies
 └── README.md
-
-
-
+```
 ---
 
 ## ⚙️ Backend (Spring Boot + Java)
