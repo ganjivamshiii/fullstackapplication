@@ -12,13 +12,7 @@ This project is a **Spring Boot Full Stack Application** using **Spring Boot (Ja
 ---
 
 ## **1️⃣ Project Structure & Components**  
-<<<<<<< HEAD
-Your project likely follows a **standard Spring Boot structure**, which includes:  
-=======
-The project likely follows a **standard Spring Boot structure**, which includes:  
->>>>>>> 709c65580ece0c3edd5658d018ad4ffaeec08cc1
 
-```
 fullstackapplication/
 │── src/
 │   ├── main/
@@ -56,13 +50,7 @@ fullstackapplication/
 🛠 **Improvements:**  
 - Consider using **Bootstrap/Tailwind CSS** for better styling.  
 - If using **Thymeleaf**, organize reusable templates efficiently.  
-<<<<<<< HEAD
-- Add **JavaScript (or React/Angular)** to improve interactivity.  
-=======
-- Add **JavaScript :** to improve interactivity.  
->>>>>>> 709c65580ece0c3edd5658d018ad4ffaeec08cc1
 
----
 
 ## **4️⃣ Database (SQL + Spring Data JPA)**  
 ✅ **Strengths:**  
@@ -83,15 +71,7 @@ fullstackapplication/
 - Use **environment variables** for database credentials (avoid hardcoding).  
 
 ✔ **Performance:**  
-<<<<<<< HEAD
 
-- Optimize **database queries** and use pagination for large datasets.  
-- Use **Docker** for easier deployment.  
-
-=======
-- Optimize **database queries** and use pagination for large datasets.  
-- Use **Docker** for easier deployment.  
->>>>>>> 709c65580ece0c3edd5658d018ad4ffaeec08cc1
 ---
 
 ### **Overall Review**  
@@ -105,8 +85,4 @@ fullstackapplication/
 - Add **Bootstrap or Tailwind CSS** for better UI.  
 - Optimize database queries for better performance.  
 
-<<<<<<< HEAD
-Would you like a **detailed README** including these points? 😃
-=======
-Would you like a **detailed README** including these points? 😃
->>>>>>> 709c65580ece0c3edd5658d018ad4ffaeec08cc1
+
