@@ -6,6 +6,7 @@ A **Spring Boot Full Stack Application** that demonstrates the use of **Java (Sp
 
 ## 📁 Project Structure & Components
 
+
 fullstackapplication/
 │── src/
 │ ├── main/
