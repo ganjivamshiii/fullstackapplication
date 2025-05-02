@@ -1,58 +1,51 @@
 package com.example.demo;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
-import java.util.Base64;
+import java.sql.SQLException;
+
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
-import java.security.SecureRandom;
+import java.util.Base64;
 
 public class RegisterUser {
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/userdb";
-    private static final String DB_USER = "root";
-    private static final String DB_PASS = "12345678";
+    private static final int SALT_LENGTH = 32;
+    private static final int ITERATIONS = 10000;
+    private static final int KEY_LENGTH = 256;
 
-    // Generate a random salt
-    public static String generateSalt() {
+    public static void registerUser(String username, String password) throws SQLException {
+        String salt = generateSalt();
+        String passwordHash = hashPassword(password, salt);
+        UserRepository.createUser(username, passwordHash, salt);
+    }
+
+    public static void updatePassword(String username, String newPassword) throws SQLException {
+        String salt = generateSalt();
+        String passwordHash = hashPassword(newPassword, salt);
+        UserRepository.updatePassword(username, passwordHash, salt);
+    }
+
+    private static String generateSalt() {
         SecureRandom random = new SecureRandom();
-        byte[] salt = new byte[16];
+        byte[] salt = new byte[SALT_LENGTH];
         random.nextBytes(salt);
         return Base64.getEncoder().encodeToString(salt);
     }
 
-    // Hash password using PBKDF2
-    public static String hashPassword(String password, String salt) throws NoSuchAlgorithmException, InvalidKeySpecException {
-        int iterations = 10000;
-        int keyLength = 256;
-        char[] passwordChars = password.toCharArray();
-        byte[] saltBytes = salt.getBytes();
-
-        PBEKeySpec spec = new PBEKeySpec(passwordChars, saltBytes, iterations, keyLength);
-        SecretKeyFactory skf = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256");
-        byte[] hash = skf.generateSecret(spec).getEncoded();
-        return Base64.getEncoder().encodeToString(hash);
-    }
-
-    // Register user method (to be used in servlet)
-    public static boolean registerUser(String username, String password) {
-        try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS)) {
-            String salt = generateSalt();
-            String hashedPassword = hashPassword(password, salt);
-
-            String sql = "INSERT INTO users (username, password_hash, salt) VALUES (?, ?, ?)";
-            PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setString(1, username);
-            stmt.setString(2, hashedPassword);
-            stmt.setString(3, salt);
-
-            int rowsInserted = stmt.executeUpdate();
-            return rowsInserted > 0;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
+        public static String hashPassword(String password, String salt) {
+            try {
+                byte[] saltBytes = Base64.getDecoder().decode(salt);
+                PBEKeySpec spec = new PBEKeySpec(
+                    password.toCharArray(),
+                    saltBytes,
+                    ITERATIONS,
+                    KEY_LENGTH
+                );
+                SecretKeyFactory skf = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256");
+                byte[] hash = skf.generateSecret(spec).getEncoded();
+                return Base64.getEncoder().encodeToString(hash);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
         }
     }
-}

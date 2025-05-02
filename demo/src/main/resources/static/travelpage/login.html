@@ -3,15 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
+    <title>Login - Travel App</title>
+    <style>
+        /* Same styles as register.html */
+        .forgot-password {
+            text-align: middle;
+            margin-top: 0.5rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+    </style>
 </head>
 <body>
-    <h2>Register</h2>
-    <form action="/register" method="post">
-        <input type="text" name="username" placeholder="Enter username" required>
-        <input type="password" name="password" placeholder="Enter password" required>
-        <button type="submit">Register</button>
-    </form>    
-    </form>
+    <div class="auth-container">
+        <h1>Welcome Back</h1>
+        
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+                <div class="forgot-password">
+                    <a href="/travelpage/forgot-password.html">Forgot password?</a>
+                </div>
+            </div>
+            
+            <div id="message" class="message"></div>
+            
+            <button type="submit">Login</button>
+            
+            <div class="login-link">
+                Don't have an account? <a href="/travelpage/register.html">Register</a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+     document.getElementById('loginForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const response = await fetch('/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: new URLSearchParams({
+            username: document.getElementById('username').value,
+            password: document.getElementById('password').value
+        })
+    });
+    //demo\src\main\resources\static\travelpage\index.html
+    const result = await response.json();
+    if (response.ok) {
+        window.location.href = '/travelpage/index.html';
+    } else {
+        document.getElementById('errorMessage').textContent = result.error;
+    }
+});
+        // Show success message if redirected from registration
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('registered')) {
+            const messageElement = document.getElementById('message');
+            messageElement.textContent = 'Registration successful! Please login';
+            messageElement.className = 'message success';
+        }
+    </script>
 </body>
 </html>
