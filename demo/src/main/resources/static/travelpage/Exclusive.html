@@ -5,72 +5,159 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Travel Page</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="index21.css">
-    <script src="script.js"></script>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
     <style>
         .navbar {
             background-color: black;
-        font-family: Arial, sans-serif; 
-        font-size: 25px; 
-        font-weight: normal; 
-        font-style: normal; 
-        line-height: 1.5; 
-    }
-    .nav-link{
-     color: aliceblue;
-    }
+            font-family: Arial, sans-serif; 
+            font-size: 25px; 
+            font-weight: normal; 
+            font-style: normal; 
+            line-height: 1.5; 
+        }
+        .nav-link{
+            color: aliceblue;
+        }
+        #yo{
+            color: #fffefe;
+            font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            font-size:30px;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://images.pexels.com/photos/547119/pexels-photo-547119.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        .cards-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin: 20px;
+            padding: 20px;
+            text-align: center;
+            width: 300px;
+        }
+
+        .card img {
+            max-width: 100%;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .card h2 {
+            margin: 20px 0 10px;
+        }
+
+        .card p {
+            margin: 10px 0;
+        }
+
+        .card a {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background: #007BFF;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        footer {
+            background: rgb(0, 0, 0);
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        footer a {
+            color: #FFD700;
+            text-decoration: none;
+        }
+
+        .loading {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        .success-message {
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+
+        .error-message {
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
     </style>
-        <nav class="navbar navbar-expand-lg flex-row" >
-            <a class="navbar-brand flex-row" href="#" id="yo">VAMSHI7.IN </a>
-            <a class="nav-link flex-row" href="index.html">Home</a>
-            <a class="nav-link flex-row" href="Exclusive.html">Exclusive</a>
-            <a class="nav-link flex-row" href="Features.html">Features</a>
-            <a class="nav-link flex-row" href="#">Services</a>
-          </nav>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg flex-row">
+        <a class="navbar-brand flex-row" href="#" id="yo">VAMSHI7.IN </a>
+        <a class="nav-link flex-row" href="index.html">Home</a>
+        <a class="nav-link flex-row" href="Exclusive.html">Exclusive</a>
+        <a class="nav-link flex-row" href="Features.html">Features</a>
+        <a class="nav-link flex-row" href="#">Services</a>
+    </nav>
+    
     <main>
-        <section class="cards-container">
-            <div class="card" id="hotel-booking">
-                <img src="https://content.r9cdn.net/rimg/himg/ed/57/03/expediav2-118149-fbef71-575961.jpg" alt="Hotel Booking">
-                <h2>Exclusive Hotel Booking</h2>
-                <p>Book the best hotels at exclusive rates.</p>
-                <a href="#">Book Now</a>
+        <div class="cards-container">
+            <!-- Roadways -->
+            <div class="card">
+                <img src="https://images.pexels.com/photos/238622/pexels-photo-238622.jpeg" alt="Roadways">
+                <div class="card-body">
+                    <h5 class="card-title">Roadways</h5>
+                    <p>Travel via luxury buses or self-drive rentals.</p>
+                    <p><strong>Price: $40.00</strong></p>
+                    <input type="text" placeholder="Enter destination" class="form-control mb-2" id="location-road">
+                    <button class="btn btn-primary btn-book" onclick="bookTravel('TR001', 'Roadways', 40.00, 'road', 'location-road')">Book Now</button>
+                    <div id="message-road"></div>
+                </div>
             </div>
-            <div class="card" id="ticket-booking">
-                <img src="https://assetscdn1.paytm.com/images/catalog/view_item/1644364/1711437854545.jpg" alt="Ticket Booking">
-                <h2>Exclusive Ticket Booking</h2>
-                <p>Get tickets to popular destinations and events.</p>
-                <a href="#">Book Now</a>
+
+            <!-- Airways -->
+            <div class="card">
+                <img src="https://images.pexels.com/photos/912050/pexels-photo-912050.jpeg" alt="Airways">
+                <div class="card-body">
+                    <h5 class="card-title">Airways</h5>
+                    <p>Fly to your dream destination with ease.</p>
+                    <p><strong>Price: $150.00</strong></p>
+                    <input type="text" placeholder="Enter destination" class="form-control mb-2" id="location-air">
+                    <button class="btn btn-primary btn-book" onclick="bookTravel('TR002', 'Airways', 150.00, 'air', 'location-air')">Book Now</button>
+                    <div id="message-air"></div>
+                </div>
             </div>
-            <div class="card" id="ticket-booking">
-                <img src="https://static.autox.com/uploads/2023/04/KTM-390-Adventure-X.jpg" alt="Ticket Booking">
-                <h2> Book offroad bikes</h2>
-                <p>Get tickets to popular destinations and events.</p>
-                <a href="#">Book Now</a>
+
+            <!-- Seaways -->
+            <div class="card">
+                <img src="https://images.pexels.com/photos/421927/pexels-photo-421927.jpeg" alt="Seaways">
+                <div class="card-body">
+                    <h5 class="card-title">Seaways</h5>
+                    <p>Enjoy luxurious ferry and cruise travel.</p>
+                    <p><strong>Price: $100.00</strong></p>
+                    <input type="text" placeholder="Enter destination" class="form-control mb-2" id="location-sea">
+                    <button class="btn btn-primary btn-book" onclick="bookTravel('TR003', 'Seaways', 100.00, 'sea', 'location-sea')">Book Now</button>
+                    <div id="message-sea"></div>
+                </div>
             </div>
-            <div class="card" id="ticket-booking">
-                <img src="https://assets.bwbx.io/images/users/iqjWHBFdfxIU/ilZ0ea9oLWdw/v0/-1x-1.jpg" alt="Ticket Booking">
-                <h2>Private Yacht</h2>
-                <p>Get tickets to popular destinations and events.</p>
-                <a href="#">Book Now</a>
-            </div>
-            <div class="card" id="ticket-booking">
-                <img src="https://5.imimg.com/data5/SELLER/Default/2022/5/HV/ZZ/LI/106321217/luxury-bedroom-interior-design-service.jpg" alt="Ticket Booking">
-                <h2> Luxury Hotels</h2>
-                <p>Get tickets to popular destinations and events.</p>
-                <a href="#">Book Now</a>
-            </div>
-            <div class="card" id="ticket-booking">
-                <img src="https://www.gcrailway.co.uk/wp-content/uploads/2024/01/566x400x48305-loughborough-Kinchley-Lane-2-Alan-Weaver-26-01-24-scaled.jpg.pagespeed.ic.GIHwGfQBqG.jpg" alt="Ticket Booking">
-                <h2>Book Train tickets</h2>
-                <p>Get tickets to popular destinations and events.</p>
-                <a href="#">Book Now</a>
-            </div>
-            <!-- Add more cards as needed -->
-        </section>
+        </div>
+
         <footer class="bg-black text-light text-center text-lg-start mt-auto py-4">
             <div class="container-fluid">
                 <div class="row">
@@ -86,7 +173,7 @@
                     <div class="col-lg-3 col-md-6 mb-4">
                         <h5 class="text-uppercase">Destinations</h5>
                         <ul class="list-unstyled">
-                            <a href="#" class="text-light">Europe</a>
+                            <li><a href="#" class="text-light">Europe</a></li>
                             <li><a href="#" class="text-light">Asia</a></li>
                             <li><a href="#" class="text-light">America</a></li>
                             <li><a href="#" class="text-light">Africa</a></li>
@@ -118,73 +205,113 @@
             </div>
         </footer>    
     </main>
+
+    <script>
+        function formatDateForBackend(date) {
+            // Format: yyyy-MM-dd HH:mm:ss
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            const hours = String(date.getHours()).padStart(2, '0');
+            const minutes = String(date.getMinutes()).padStart(2, '0');
+            const seconds = String(date.getSeconds()).padStart(2, '0');
+            
+            return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+        }
+
+        function showMessage(messageId, message, isSuccess = true) {
+            const messageDiv = document.getElementById(messageId);
+            messageDiv.innerHTML = `<div class="${isSuccess ? 'success-message' : 'error-message'}">${message}</div>`;
+            
+            // Clear message after 5 seconds
+            setTimeout(() => {
+                messageDiv.innerHTML = '';
+            }, 5000);
+        }
+
+        function bookTravel(id, title, price, bookingType, locationInputId) {
+            const location = document.getElementById(locationInputId).value.trim();
+            const button = event.target;
+            const messageId = `message-${bookingType}`;
+            
+            if (!location) {
+                showMessage(messageId, "Please enter a destination.", false);
+                return;
+            }
+
+            // Collect customer information
+            const customerName = prompt("Please enter your name:");
+            if (!customerName || customerName.trim() === '') {
+                showMessage(messageId, "Name is required for booking.", false);
+                return;
+            }
+
+            const customerEmail = prompt("Please enter your email:");
+            if (!customerEmail || customerEmail.trim() === '') {
+                showMessage(messageId, "Email is required for booking.", false);
+                return;
+            }
+
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(customerEmail)) {
+                showMessage(messageId, "Please enter a valid email address.", false);
+                return;
+            }
+
+            // Show loading state
+            button.disabled = true;
+            button.textContent = 'Booking...';
+            button.classList.add('loading');
+
+            const bookingData = {
+                exclusiveId: id,
+                customerName: customerName.trim(),
+                customerEmail: customerEmail.trim(),
+                bookingDate: formatDateForBackend(new Date()),
+                numberOfGuests: 1,
+                totalAmount: price,
+                bookingStatus: "PENDING",
+                location: location,
+                bookingType: bookingType
+            };
+
+            console.log('Sending booking data:', bookingData);
+
+            fetch('/api/bookings', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(bookingData)
+            })
+            .then(response => {
+                console.log('Response status:', response.status);
+                if (!response.ok) {
+                    return response.json().then(err => { 
+                        throw new Error(err.error || `Server returned ${response.status}`); 
+                    });
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Booking successful:', data);
+                showMessage(messageId, `Booking successful for ${title}!<br>Booking ID: ${data.id}<br>Status: ${data.bookingStatus}`, true);
+                
+                // Clear the location input
+                document.getElementById(locationInputId).value = '';
+            })
+            .catch(error => {
+                console.error('Booking error:', error);
+                showMessage(messageId, `Booking failed: ${error.message}`, false);
+            })
+            .finally(() => {
+                // Reset button state
+                button.disabled = false;
+                button.textContent = 'Book Now';
+                button.classList.remove('loading');
+            });
+        }
+    </script>
 </body>
 </html>
-<style>
-    #you{
-    color: #fffefe;
-    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size:30px;
-
-}
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-image: url('https://images.pexels.com/photos/547119/pexels-photo-547119.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
-    background-size: cover;
-    background-attachment: fixed;
-}
-
-.cards-container {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    padding: 20px;
-}
-
-.card {
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    margin: 20px;
-    padding: 20px;
-    text-align: center;
-    width: 300px;
-}
-
-.card img {
-    max-width: 100%;
-    border-radius: 8px 8px 0 0;
-}
-
-.card h2 {
-    margin: 20px 0 10px;
-}
-
-.card p {
-    margin: 10px 0;
-}
-
-.card a {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 10px 20px;
-    background: #007BFF;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-}
-
-footer {
-    background: rgb(0, 0, 0);
-    color: white;
-    text-align: center;
-    padding: 10px 0;
-}
-
-footer a {
-    color: #FFD700;
-    text-decoration: none;
-}
-</style>

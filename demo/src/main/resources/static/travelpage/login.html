@@ -6,35 +6,77 @@
     <title>Login - Travel App</title>
     <style>
         /* Same styles as register.html */
+       
         .forgot-password {
             text-align: middle;
             margin-top: 0.5rem;
             margin-bottom: 1rem;
             font-size: 0.9rem;
         }
+        .h1{
+            text-align: center;
+            color: rgb(12, 11, 13);
+        }
+        .username{
+            color: black;
+            size: 0cm;
+        }
+        .form-group{
+            text-align: center;
+            font-size: 20px;
+        }
+        .login{
+        position: absolute;
+        top: 50%;
+        left: 60%;
+        transform: translate(-50%, -50%);
+            height: 30px;
+            width: 60px;
+            font-size: medium;
+            color: blue;/* Centers both horizontally and vertically */ /* Adjust height as needed */
+        }
+        .login-link{
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        }
+        .box {
+    width: 250px;              /* Same width */
+    height: 40px;              /* Same height */
+    padding: 8px 12px;         /* Inner spacing */
+    font-size: 16px;           /* Same text size */
+    box-sizing: border-box;    /* Include padding in width/height */
+    margin-bottom: 10px;       /* Optional: space between boxes */
+    border: 1px solid #ccc;    /* Same border */
+    border-radius: 5px;        /* Optional: rounded corners */
+}
+
     </style>
 </head>
 <body>
     <div class="auth-container">
-        <h1>Welcome Back</h1>
+        <h1 class="h1">Welcome Back</h1>
         
         <form id="loginForm">
             <div class="form-group">
                 <label for="username">Username</label>
-                <input type="text" id="username" name="username" required>
+            <div>
+                <input class="box" type="text" id="username" name="username" required>
             </div>
-            
+            </div>
+           
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" id="password" name="password" required>
+                <div>
+                    <input class="box" type="password" id="password" name="password" required>
+                </div>
                 <div class="forgot-password">
                     <a href="/travelpage/forgot-password.html">Forgot password?</a>
                 </div>
             </div>
-            
             <div id="message" class="message"></div>
-            
-            <button type="submit">Login</button>
+            <button class="login" type="submit">Login</button>
             
             <div class="login-link">
                 Don't have an account? <a href="/travelpage/register.html">Register</a>
@@ -56,7 +98,7 @@
             password: document.getElementById('password').value
         })
     });
-    //demo\src\main\resources\static\travelpage\index.html
+    //src/main/resources/static/travelpage/index.html
     const result = await response.json();
     if (response.ok) {
         window.location.href = '/travelpage/index.html';
